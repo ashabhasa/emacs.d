@@ -60,5 +60,8 @@
 ;; projectile everywhere!
 (projectile-global-mode)
 (setq projectile-create-missing-test-files t)
+(global-set-key (kbd "s-f") 'projectile-find-file)
+(global-set-key (kbd "s-F") 'projectile-ag)
+
 
 (global-set-key (kbd "M-n") 'imenu)

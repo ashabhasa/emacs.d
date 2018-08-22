@@ -79,3 +79,12 @@
 
 ;; crux
 (require 'crux)
+
+;;smartparens
+(require 'smartparens-config)
+(setq sp-interactive-dwim t)
+(sp-use-smartparens-bindings)
+(sp-pair "(" ")" :wrap "C-(") ;; how do people live without this?
+(sp-pair "[" "]" :wrap "s-[") ;; C-[ sends ESC
+(sp-pair "{" "}" :wrap "C-{")
+

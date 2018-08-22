@@ -101,6 +101,7 @@
     coffee-mode
     scss-mode
     haskell-mode
+    scala-mode
     company
     ack-and-a-half
     ag
@@ -116,6 +117,16 @@
     helm-projectile
     helm-descbinds
     yasnippet
+
+    ;; ensime package for scala development
+    ensime
+    ;;  improve scala experience with etags
+    etags-select
+
+    ;;better undo
+    undo-tree
+    ;;smartparens
+    smartparens
     use-package))
 
 (dolist (p my-packages)
@@ -131,7 +142,7 @@
 ;;
 ;; (require 'yaml-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-;; 
+;;
 ;; Adding this code will make Emacs enter yaml mode whenever you open
 ;; a .yml file
 (add-to-list 'load-path "~/.emacs.d/vendor")
@@ -177,6 +188,7 @@
 (load "setup-org.el")
 (load "setup-prolog.el")
 (load "setup-ruby.el")
+(load "setup-scala.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

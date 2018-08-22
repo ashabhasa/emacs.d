@@ -19,3 +19,11 @@
 
 ;;
 (global-set-key (kbd "C-x C-k") 'paredit-copy-as-kill)
+
+;; Disable ensime welcome message
+(setq ensime-startup-notification nil)
+
+;; projectile binding
+(projectile-mode +1)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
