@@ -64,4 +64,4 @@
 (global-set-key (kbd "s-F") 'projectile-ag)
 
 
-(global-set-key (kbd "M-n") 'imenu)
+(global-set-key (kbd "M-i") 'imenu)

@@ -127,6 +127,10 @@
     undo-tree
     ;;smartparens
     smartparens
+
+    ;; expand region
+    ;;expand-region
+
     use-package))
 
 (dolist (p my-packages)
@@ -189,6 +193,7 @@
 (load "setup-prolog.el")
 (load "setup-ruby.el")
 (load "setup-scala.el")
+(load "setup-haskell.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

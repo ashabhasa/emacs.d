@@ -8,6 +8,9 @@
 ;;(setq prettify-symbols-alist scala-prettify-symbols-alist)
 ;;(prettify-symbols-mode)
 
+;;specific ensime backend for expand-region
+;;(require 'ensime-expand-region)
+
 ;; Simple buffer only completion bypassing company mode and server
 (bind-key "C-<tab>" 'company-or-dabbrev-complete)
 

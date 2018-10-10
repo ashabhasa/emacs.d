@@ -75,7 +75,8 @@
 
 (setq electric-indent-mode nil)
 
-(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "s-g") 'magit-status)
+(global-set-key (kbd "s-b") 'magit-blame)
 
 ;; crux
 (require 'crux)
@@ -87,4 +88,18 @@
 (sp-pair "(" ")" :wrap "C-(") ;; how do people live without this?
 (sp-pair "[" "]" :wrap "s-[") ;; C-[ sends ESC
 (sp-pair "{" "}" :wrap "C-{")
+
+;; WORKAROUND https://github.com/Fuco1/smartparens/issues/543
+(bind-key "C-<left>" nil smartparens-mode-map)
+(bind-key "C-<right>" nil smartparens-mode-map)
+
+(bind-key "s-<delete>" 'sp-kill-sexp smartparens-mode-map)
+(bind-key "s-<backspace>" 'sp-backward-kill-sexp smartparens-mode-map)
+(bind-key "s-<home>" 'sp-beginning-of-sexp smartparens-mode-map)
+(bind-key "s-<end>" 'sp-end-of-sexp smartparens-mode-map)
+(bind-key "s-<up>" 'sp-beginning-of-previous-sexp smartparens-mode-map)
+;; sp-next-sp could be better https://github.com/Fuco1/smartparens/issues/541
+(bind-key "s-<down>" 'sp-next-sexp smartparens-mode-map)
+(bind-key "s-<left>" 'sp-backward-up-sexp smartparens-mode-map)
+(bind-key "s-<right>" 'sp-down-sexp smartparens-mode-map)
 
