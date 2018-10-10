@@ -98,7 +98,7 @@
     crux
 
     yaml-mode
-    coffee-mode
+    ;; coffee-mode
     scss-mode
     haskell-mode
     scala-mode
@@ -191,7 +191,7 @@
 (load "setup-yaml.el")
 (load "setup-org.el")
 (load "setup-prolog.el")
-(load "setup-ruby.el")
+;; (load "setup-ruby.el")
 (load "setup-scala.el")
 (load "setup-haskell.el")
 
