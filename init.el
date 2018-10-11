@@ -128,8 +128,18 @@
     ;;smartparens
     smartparens
 
+    ;; haskell pretty printer
+    ;; https://github.com/commercialhaskell/hindent
+    hindent
+
+    ;;mark down  
+    markdown-mode
+    
     ;; expand region
     ;;expand-region
+    
+    ;; json reformatting tool
+    json-reformat
 
     use-package))
 
@@ -250,3 +260,9 @@
 
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
