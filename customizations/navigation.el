@@ -65,3 +65,9 @@
 
 
 (global-set-key (kbd "M-i") 'imenu)
+
+;; Disable arrow keys 
+(global-unset-key (kbd "<left>"))
+(global-unset-key (kbd "<right>"))
+(global-unset-key (kbd "<up>"))
+(global-unset-key (kbd "<down>"))
