@@ -1,18 +1,21 @@
 ;; haskell
 (require 'haskell-mode)
 (require 'hindent)
-
+(require 'haskell-interactive-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook #'hindent-mode)
 
 (add-hook 'haskell-mode
           (lambda ()
-            (show-paren-mode)
+            ;; (show-paren-mode)
             (smartparens-mode)
             (yas-minor-mode)
             (git-gutter-mode)
             (company-mode)
+            (set (make-local-variable 'company-backends)
+                 (append '((company-capf company-dabbrev-code))
+                         company-backends))
             )
 )
 
@@ -89,3 +92,6 @@
      (t (ag-files sym
                   "\\.hs$"
 (haskell-session-current-dir (haskell-session)))))))
+
+(define-key haskell-mode-map (kbd "C-c i") 'hindent/reformat-decl)
+
