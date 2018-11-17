@@ -16,9 +16,7 @@
              '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 
 (add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
-;; (add-to-list 'package-pinned-packages '(clj-refactor . "melpa-stable") t)
-(add-to-list 'package-pinned-packages '(magit . "melpa-stable") t)
-;; (add-to-list 'package-pinned-packages '(helm-projectile . "melpa-stable") t)
+;;(add-to-list 'package-pinned-packages '(magit . "melpa-stable") t)
 
 ;; Load and activate emacs packages. Do this first so that the
 ;; packages are loaded before you start trying to modify them.
@@ -94,6 +92,7 @@
     ;; git integration
     magit
 
+    git-timemachine
     ;; https://github.com/bbatsov/crux
     crux
 
@@ -120,11 +119,13 @@
 
     ;; ensime package for scala development
     ensime
+
     ;;  improve scala experience with etags
     etags-select
 
     ;;better undo
     undo-tree
+
     ;;smartparens
     smartparens
 
@@ -132,14 +133,22 @@
     ;; https://github.com/commercialhaskell/hindent
     hindent
 
-    ;;mark down  
+    ;;mark down
     markdown-mode
-    
+
     ;; expand region
-    ;;expand-region
-    
+    expand-region
+
     ;; json reformatting tool
     json-reformat
+
+    ;; awesome package that  allows you to save
+    ;; up on the steps you'd normally have to take when saving and killing stuff.
+    easy-kill
+
+    flycheck
+
+    flycheck-haskell
 
     use-package))
 

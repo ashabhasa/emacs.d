@@ -81,6 +81,9 @@
 ;; crux
 (require 'crux)
 
+(global-set-key (kbd "s-o") 'crux-smart-open-line-above)
+(global-set-key (kbd "M-o") 'crux-smart-open-line)
+
 ;;smartparens
 (require 'smartparens-config)
 (setq sp-interactive-dwim t)

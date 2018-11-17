@@ -14,8 +14,8 @@
 
 ;; Turn on recent file mode so that you can more easily switch to
 ;; recently edited files when you first start emacs
-(setq recentf-save-file (concat user-emacs-directory ".recentf"))
 (require 'recentf)
+(setq recentf-save-file (concat user-emacs-directory ".recentf"))
 (recentf-mode 1)
 (setq recentf-max-menu-items 40)
 
@@ -68,8 +68,76 @@
 
 (global-set-key (kbd "M-i") 'imenu)
 
-;; Disable arrow keys 
+;; Handy way of getting back to previuos places
+(bind-key "C-x p" 'pop-to-mark-command)
+(setq set-mark-command-repeat-pop t)
+
+;; Disable arrow keys
 (global-unset-key (kbd "<left>"))
 (global-unset-key (kbd "<right>"))
 (global-unset-key (kbd "<up>"))
 (global-unset-key (kbd "<down>"))
+
+(defun arber/isearch-yank-current-word ()
+  "Pull current word from buffer into search string."
+  (interactive)
+  (save-excursion
+    (skip-syntax-backward "w_")
+    (isearch-yank-internal
+      (lambda ()
+        (skip-syntax-forward "w_")
+        (point)))))
+
+(define-key isearch-mode-map (kbd "C-x") 'arber/isearch-yank-current-word)
+
+(defun arber/search-word-backward ()
+  "Find previous occurrence of the current word."
+  (interactive)
+  (let ((cur (point)))
+    (skip-syntax-backward "w_")
+    (goto-char
+     (if (re-search-backward (concat "\\_<" (regexp-quote (current-word)) "\\_>") nil t)
+         (match-beginning 0)
+       cur))))
+
+(defun arber/search-word-forward ()
+  "Find the next occurrence of the current word."
+  (interactive)
+  (let ((cur (point)))
+    (skip-syntax-forward "w_")
+    (goto-char
+      (if (re-search-forward (concat "\\_<" (regexp-quote (current-word)) "\\_>") nil t)
+          (match-beginning 0)
+        cur))))
+(global-set-key '[M-up]   'arber/search-word-backward)
+(global-set-key '[M-down] 'arber/search-word-forward)
+
+;;Copied from http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-line/
+(defun arber/smarter-move-beginning-of-line (arg)
+  "Move point back to indentation of beginning of line.
+  Move point to the first non-whitespace character on this line.
+  If point is already ther, move to the beginning of the line.
+  Effectively toggle between the first non-whitespace charcater andthe beginning of the line.
+
+  If ARG is not nil or 1, move forward ARG -1 lines first.
+  If point reaches the beginning or end of the buffer, stop there."
+  (interactive "^p")
+  (setq arg (or arg 1))
+  ;; Move lines first
+  (when (/= arg 1)
+    (let ((line-move-visual nil))
+      (forward-line (1- arg))))
+  (let ((orig-point (point)))
+    (back-to-indentation)
+    (when (= orig-point (point))
+      (move-beginning-of-line 1))))
+
+;; Remap C-a to `arber/smarter-move-beginning-of-line`
+(global-set-key [remap move-beginning-of-line] 'arber/smarter-move-beginning-of-line)
+
+
+;; Use easy-kill in place of kill-ring-save
+(global-set-key [remap kill-ring-save] #'easy-kill)
+
+;; Use easy-mark in place of mark-sexp
+(global-set-key [remap mark-sexp] #'easy-mark)
