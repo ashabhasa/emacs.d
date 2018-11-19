@@ -101,7 +101,8 @@
     scss-mode
     haskell-mode
     scala-mode
-    company
+    ;;company
+    company-ghc
     ack-and-a-half
     ag
     adoc-mode
@@ -226,10 +227,27 @@
  '(cider-cljs-lein-repl
    "(do (require 'figwheel-sidecar.repl-api) (figwheel-sidecar.repl-api/start-figwheel!) (figwheel-sidecar.repl-api/cljs-repl))")
  '(coffee-tab-width 2)
+ '(company-ghc-show-info t)
  '(custom-safe-themes
    (quote
     ("4486ade2acbf630e78658cd6235a5c6801090c2694469a2a2b4b0e12227a64b9" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" default)))
  '(fci-rule-color "#373b41")
+ '(haskell-interactive-mode-eval-pretty nil)
+ '(haskell-interactive-mode-include-file-name nil)
+ '(haskell-notify-p t)
+ '(haskell-process-args-ghci (quote nil))
+ '(haskell-process-auto-import-loaded-modules t)
+ '(haskell-process-log t)
+ '(haskell-process-reload-with-fbytecode nil)
+ '(haskell-process-show-debug-tips nil)
+ '(haskell-process-suggest-haskell-docs-imports t)
+ '(haskell-process-suggest-hoogle-imports nil)
+ '(haskell-process-suggest-remove-import-lines t)
+ '(haskell-process-type (quote stack-ghci))
+ '(haskell-process-use-presentation-mode t)
+ '(haskell-stylish-on-save nil)
+ '(haskell-tags-on-save nil)
+ '(hindent-style "gibiansky")
  '(package-selected-packages
    (quote
     (powerline monokai-theme atom-one-dark-theme dracula-theme clojure-mode-extra-font-locking django-mode csv-mode csv doom-themes markdown-mode+ moe-theme org-bullets ac-cider base16-theme clojure-mode scss-mode yaml-mode web-mode use-package thesaurus tagedit smex rainbow-delimiters php-mode noflet markdown-mode magit ido-ubiquitous helm-projectile helm-ls-git helm-git-grep helm-descbinds helm-ag haskell-mode haml-mode git-gutter exec-path-from-shell enh-ruby-mode dockerfile-mode csharp-mode crux company color-theme-sanityinc-tomorrow coffee-mode clj-refactor aggressive-indent ag adoc-mode adjust-parens ack-and-a-half)))
@@ -237,6 +255,10 @@
    (quote
     ((cider-refresh-after-fn . "integrant.repl/resume")
      (cider-refresh-before-fn . "integrant.repl/suspend"))))
+ '(shm-auto-insert-bangs t)
+ '(shm-auto-insert-skeletons t)
+ '(shm-use-hdevtools t)
+ '(shm-use-presentation-mode t)
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote

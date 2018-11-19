@@ -14,3 +14,4 @@ archive-contents
 .cask
 cider
 \.mc-lists.el
+helm-adaptive-history
