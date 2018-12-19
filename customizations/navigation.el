@@ -109,8 +109,8 @@
       (if (re-search-forward (concat "\\_<" (regexp-quote (current-word)) "\\_>") nil t)
           (match-beginning 0)
         cur))))
-(global-set-key '[M-up]   'arber/search-word-backward)
-(global-set-key '[M-down] 'arber/search-word-forward)
+(global-set-key [s-up]   'arber/search-word-backward)
+(global-set-key [s-down] 'arber/search-word-forward)
 
 ;;Copied from http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-line/
 (defun arber/smarter-move-beginning-of-line (arg)
