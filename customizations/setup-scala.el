@@ -15,6 +15,9 @@
 ;; Simple buffer only completion bypassing company mode and server
 (bind-key "C-<tab>" 'company-or-dabbrev-complete)
 
+
+(require 'ensime)
+
 (add-hook 'scala-mode-hook
           (lambda ()
             (show-paren-mode)

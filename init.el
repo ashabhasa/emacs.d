@@ -121,6 +121,8 @@
     ;; ensime package for scala development
     ensime
 
+    ;; Emacs LSP client https://github.com/joaotavora/eglot
+    ;; eglot
     ;;  improve scala experience with etags
     etags-select
 
@@ -147,7 +149,7 @@
     ;; up on the steps you'd normally have to take when saving and killing stuff.
     easy-kill
 
-    flycheck
+    ;; flycheck
 
     flycheck-haskell
 

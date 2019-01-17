@@ -28,7 +28,8 @@
 ;; http://www.emacswiki.org/emacs/InteractivelyDoThings
 (ido-mode t)
 (ido-mode 1)
-(setq ido-everywhere t)
+;; Conflicts with Helm
+;; (setq ido-everywhere t)
 
 ;; This allows partial matches, e.g. "tl" will match "Tyrion Lannister"
 (setq ido-enable-flex-matching t)

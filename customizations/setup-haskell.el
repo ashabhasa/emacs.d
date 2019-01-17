@@ -87,7 +87,7 @@
  '(haskell-process-args-ghci '())
  '(haskell-notify-p t)
  '(haskell-stylish-on-save nil)
- '(haskell-tags-on-save nil)
+ '(haskell-tags-on-save t)
  '(haskell-process-suggest-remove-import-lines t)
  '(haskell-process-auto-import-loaded-modules t)
  '(haskell-process-log t)
