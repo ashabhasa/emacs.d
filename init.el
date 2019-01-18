@@ -152,6 +152,12 @@
     ;; flycheck
 
     flycheck-haskell
+  
+    minions
+
+    moody
+
+    color-theme-sanityinc-tomorrow
 
     use-package))
 
@@ -216,6 +222,8 @@
 ;; (load "setup-ruby.el")
 (load "setup-scala.el")
 (load "setup-haskell.el")
+(load "setup-xml.el")
+(load "setup-modeline.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
