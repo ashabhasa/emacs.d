@@ -35,6 +35,8 @@
 ;;                 (:propertize (vc-mode vc-mode) face (:weight normal))))
 
 
+;; disply line numbers
+(global-display-line-numbers-mode)
 
 ;; typography
 (setq-default line-spacing nil)
@@ -87,31 +89,19 @@
 
 ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
 ;; may have their own settings.
-;; (load-theme 'doom-tomorrow-night t)
-;; (load-theme 'atom-one-dark t)
-;; (load-theme 'monokai t)
+(load-theme 'doom-tomorrow-night t)
+;; (load-theme 'doom-one t)
 
 ;; Enable flashing mode-line on errors
-;; (doom-themes-visual-bell-config)
+(doom-themes-visual-bell-config)
 
 ;; Enable custom neotree theme
-;; (doom-themes-neotree-config)  ; all-the-icons fonts must be installed!
+(doom-themes-neotree-config)  ; all-the-icons fonts must be installed!
 
 ;; Corrects (and improves) org-mode's native fontification.
 (doom-themes-org-config)
 
-
-(use-package color-theme-sanityinc-tomorrow ; Default theme
-  :ensure t
-  :config (load-theme 'sanityinc-tomorrow-night 'no-confirm))
-
-;; powerline customizes the mode line
-;; (add-to-list 'load-path "~/.emacs.d/vendor/emacs-powerline")
-;; (require 'powerline)
-;;(custom-set-faces
-;; '(mode-line ((t (:foreground "#333" :background "#bad063" :box nil))))
-;; ;'(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil))))
-;; )
+;; (load-theme 'sanityinc-tomorrow-night t)
 
 ;; Uncomment the lines below by removing semicolons and play with the
 ;; values in order to set the width (in characters wide) and height
@@ -155,7 +145,7 @@
 (setq ns-pop-up-frames nil)
 
 (hl-line-mode t)
-;; (set-face-attribute 'hl-line nil :inherit nil :background "gray6")
+(set-face-attribute 'hl-line nil :inherit nil :background "gray6")
 
 
 ;; bind super to command key

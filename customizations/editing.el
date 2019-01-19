@@ -102,3 +102,9 @@
 ;; Undo tree visualize
 (global-set-key (kbd "C-\\") 'undo-tree-visualize)
 
+;; Use easy-kill in place of kill-ring-save
+(global-set-key [remap kill-ring-save] 'easy-kill)
+
+;; Use easy-mark in place of mark-sexp
+(global-set-key [remap mark-sexp] 'easy-mark)
+

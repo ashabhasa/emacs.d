@@ -137,8 +137,4 @@
 (global-set-key [remap move-beginning-of-line] 'arber/smarter-move-beginning-of-line)
 
 
-;; Use easy-kill in place of kill-ring-save
-(global-set-key [remap kill-ring-save] #'easy-kill)
 
-;; Use easy-mark in place of mark-sexp
-(global-set-key [remap mark-sexp] #'easy-mark)

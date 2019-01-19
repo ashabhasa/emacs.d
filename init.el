@@ -111,11 +111,11 @@
     enh-ruby-mode
     base16-theme
     git-gutter
-    helm
-    helm-ag
-    helm-git-grep
-    helm-projectile
-    helm-descbinds
+    ;; helm
+    ;; helm-ag
+    ;; helm-git-grep
+    ;; helm-projectile
+    ;; helm-descbinds
     yasnippet
 
     ;; ensime package for scala development
@@ -155,9 +155,13 @@
   
     minions
 
-    moody
+    ;; moody
 
     color-theme-sanityinc-tomorrow
+
+    dimmer
+    
+    solarized-theme
 
     use-package))
 
@@ -224,6 +228,10 @@
 (load "setup-haskell.el")
 (load "setup-xml.el")
 (load "setup-modeline.el")
+(load "setup-buffer.el")
+(load "setup-ivy.el")
+(load "setup-projectile.el")
+(load "setup-magit.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
