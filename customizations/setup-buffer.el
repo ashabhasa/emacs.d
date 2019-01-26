@@ -99,6 +99,21 @@
     (interactive)
     (arber-save-wins-then-call 'ibuffer))
 
+
+  (defvar arber-saved-window-configuration nil)
+
+  (defun arber-save-wins-then-call (func &optional args)
+    "Save current window configuration, then call FUNC optionally with ARGS."
+    (interactive)
+    (push (current-window-configuration) arber-saved-window-configuration)
+    (cond
+     ;; We have arguments for the function
+     ((bound-and-true-p args) (funcall func args))
+     ;; The function expects exactly one argument, and we want it to be nil
+     ((equal args "nil") (funcall func nil))
+     ;; The function does not expect arguments
+     (t (funcall func))))
+
   ;; Use a single full frame for ibuffer
   ;; (with-eval-after-load 'ibuffer
   ;;   (fullframe ibuffer arber-pop-window-configuration))
