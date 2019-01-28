@@ -3,13 +3,18 @@
 (require 'hindent)
 (require 'haskell-interactive-mode)
 (require 'haskell-process)
-(require 'company)
 
 
-; Make Emacs look in Stack directory for binaries
-(let ((my-path (expand-file-name "/usr/local/bin")))
-  (setenv "PATH" (concat my-path ":" (getenv "PATH")))
-(add-to-list 'exec-path my-path))
+
+; Make Emacs look in Stack/Cabal directory for binaries
+(let ((my-local-path (expand-file-name "~/.local/bin")))
+     (setenv "PATH" (concat my-local-path ":" (getenv "PATH")))
+(add-to-list 'exec-path my-local-path))
+
+; Make Emacs look in Stack/Cabal directory for binaries
+(let ((my-stack-path (expand-file-name "/usr/local/bin")))
+     (setenv "PATH" (concat my-stack-path ":" (getenv "PATH")))
+  (add-to-list 'exec-path my-stack-path))
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook #'hindent-mode)
@@ -19,21 +24,27 @@
             (smartparens-mode)
             (yas-minor-mode)
             (git-gutter-mode)
-            (company-mode +1)
-            (global-flycheck-mode +1)
-            (set (make-local-variable 'company-backends)
-                 (append '((company-capf company-dabbrev-code))
-                         company-backends))
+            ;; (company-mode +1)
+            ;; (global-flycheck-mode +1)
+            ;; (set (make-local-variable 'company-backends)
+                 ;; (append '((company-capf company-dabbrev-code))
+                         ;; company-backends))
             )
 )
+;; (global-flycheck-mode)
+(add-hook 'haskell-mode-hook 'eglot-ensure)
 
 ;; enable minor mode which activates keybindings associated with interactive mode
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+;; (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
-(add-to-list 'company-backends 'company-ghc)
+;; Enable company-mode completions only for haskell files
+;; (require 'company)
+;; (add-to-list 'company-backends 'company-ghc)
 
 (eval-after-load 'haskell-mode
   '(define-key haskell-mode-map (kbd "C-c C-o") 'haskell-compile))
+(eval-after-load 'haskell-cabal
+  '(define-key haskell-cabal-mode-map (kbd "C-c C-o") 'haskell-compile))
 
 ;; Functions
 
@@ -73,17 +84,14 @@
 (define-key haskell-mode-map (kbd "C-s-<right>") 'haskell-move-right)
 (define-key haskell-mode-map (kbd "C-s-<left>")  'haskell-move-left)
 
-(define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
-(define-key haskell-mode-map (kbd "C-`")     'haskell-interactive-bring)
-(define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
-(define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
-(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
-(define-key haskell-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
-
 (custom-set-variables
  '(company-ghc-show-info t)
  '(haskell-process-type 'stack-ghci
                         '(haskell-process-type 'chosen-process-type))
+ ;; Use cabal integrated capabilities instead of ghci 
+ ;; This will ensure that your projects stay sandboxed, instead of polluting the global database. 
+ ;; '(haskell-process-type 'cabal-repl 
+                        ;; '(haskell-process-type 'chosen-process-type))
  '(haskell-process-args-ghci '())
  '(haskell-notify-p t)
  '(haskell-stylish-on-save nil)
@@ -103,5 +111,19 @@
  '(haskell-process-suggest-hoogle-imports nil)
  '(haskell-process-suggest-haskell-docs-imports t)
  '(hindent-style "gibiansky"))
+
+(eval-after-load 'haskell-mode '(progn
+  (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
+  (define-key haskell-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
+  (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
+  (define-key haskell-mode-map (kbd "C-c C-n C-t") 'haskell-process-do-type)
+  (define-key haskell-mode-map (kbd "C-c C-n C-i") 'haskell-process-do-info)
+  (define-key haskell-mode-map (kbd "C-c C-n C-c") 'haskell-process-cabal-build)
+  (define-key haskell-mode-map (kbd "C-c C-n c") 'haskell-process-cabal)))
+(eval-after-load 'haskell-cabal '(progn
+  (define-key haskell-cabal-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
+  (define-key haskell-cabal-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
+  (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
+  (define-key haskell-cabal-mode-map (kbd "C-c c") 'haskell-process-cabal)))
 
 

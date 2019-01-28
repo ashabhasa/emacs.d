@@ -102,7 +102,9 @@
     haskell-mode
     scala-mode
     ;;company
-    company-ghc
+    ;; company-ghc
+    ;;ghc
+    ghc
     ack-and-a-half
     ag
     adoc-mode
@@ -122,11 +124,11 @@
     ensime
 
     ;; Emacs LSP client https://github.com/joaotavora/eglot
-    ;; eglot
+    eglot
     ;;  improve scala experience with etags
     ;;etags-select
 
-    ;;better undo
+    ;; undo
     undo-tree
 
     ;;smartparens
@@ -152,7 +154,7 @@
     ;; flycheck
 
     flycheck-haskell
-  
+
     minions
 
     ;; moody
@@ -160,7 +162,7 @@
     color-theme-sanityinc-tomorrow
 
     dimmer
-    
+
     solarized-theme
 
     use-package))
@@ -169,7 +171,7 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
-
+(add-hook 'after-init-hook 'global-company-mode)
 ;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
 ;; to load them.
 ;;
@@ -268,7 +270,7 @@
  '(hindent-style "gibiansky")
  '(package-selected-packages
    (quote
-    (powerline monokai-theme atom-one-dark-theme dracula-theme clojure-mode-extra-font-locking django-mode csv-mode csv doom-themes markdown-mode+ moe-theme org-bullets ac-cider base16-theme clojure-mode scss-mode yaml-mode web-mode use-package thesaurus tagedit smex rainbow-delimiters php-mode noflet markdown-mode magit ido-ubiquitous helm-projectile helm-ls-git helm-git-grep helm-descbinds helm-ag haskell-mode haml-mode git-gutter exec-path-from-shell enh-ruby-mode dockerfile-mode csharp-mode crux company color-theme-sanityinc-tomorrow coffee-mode clj-refactor aggressive-indent ag adoc-mode adjust-parens ack-and-a-half)))
+    (powerline monokai-theme atom-one-dark-theme dracula-theme clojure-mode-extra-font-locking django-mode csv-mode csv doom-themes markdown-mode+ moe-theme org-bullets base16-theme clojure-mode scss-mode yaml-mode web-mode use-package thesaurus tagedit smex rainbow-delimiters php-mode noflet markdown-mode magit ido-ubiquitous helm-projectile helm-ls-git helm-git-grep helm-descbinds helm-ag haskell-mode haml-mode git-gutter exec-path-from-shell enh-ruby-mode dockerfile-mode csharp-mode crux company color-theme-sanityinc-tomorrow coffee-mode clj-refactor aggressive-indent ag adoc-mode adjust-parens ack-and-a-half)))
  '(safe-local-variable-values
    (quote
     ((cider-refresh-after-fn . "integrant.repl/resume")
