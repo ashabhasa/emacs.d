@@ -15,3 +15,6 @@ archive-contents
 cider
 \.mc-lists.el
 helm-adaptive-history
+history
+amx-items
+forge-database.sqlite
